@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Liste des Factures</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-4">Liste des Factures</h1>
+  <a href="/factures/ajouter" class="bg-blue-500 text-white px-4 py-2 rounded">Ajouter une Facture</a>
+  <table class="table-auto w-full mt-4 bg-white shadow-md rounded">
+    <thead>
+    <tr>
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Date de Facture</th>
+      <th class="px-4 py-2">Montant</th>
+      <th class="px-4 py-2">Commande</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="facture : ${factures}">
+      <td class="border px-4 py-2" th:text="${facture.id}"></td>
+      <td class="border px-4 py-2" th:text="${facture.dateFacture}"></td>
+      <td class="border px-4 py-2" th:text="${facture.montant}"></td>
+      <td class="border px-4 py-2" th:text="${facture.commande.nom}"></td>
+      <td class="border px-4 py-2">
+        <a th:href="@{/factures/modifier/{id}(id=${facture.id})}" class="text-blue-500">Modifier</a>
+        <a th:href="@{/factures/supprimer/{id}(id=${facture.id})}" class="text-red-500 ml-4">Supprimer</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

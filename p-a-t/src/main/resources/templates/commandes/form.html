@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formulaire Commande</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<div class="container mx-auto">
+  <h1 class="text-3xl font-bold mb-8">Formulaire Commande</h1>
+  <form th:action="@{/commandes/ajouter}" th:object="${commande}" method="post" class="bg-white shadow-md rounded p-8">
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="user">Utilisateur</label>
+      <select class="border rounded w-full py-2 px-3" id="user" name="userId" required>
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.nom}"></option>
+      </select>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2">Produits</label>
+      <div th:each="produit : ${produits}">
+        <input type="checkbox" th:id="'produit-' + ${produit.id}" th:name="produitIds" th:value="${produit.id}">
+        <label th:for="'produit-' + ${produit.id}" th:text="${produit.nom}"></label>
+      </div>
+    </div>
+    <div>
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">Enregistrer</button>
+      <a href="/commandes" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-4">Annuler</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

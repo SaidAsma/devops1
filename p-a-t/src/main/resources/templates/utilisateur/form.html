@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Formulaire Utilisateur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-4" th:text="${utilisateur.id != null} ? 'Modifier Utilisateur' : 'Ajouter Utilisateur'"></h1>
+  <form th:action="@{/utilisateurs}" th:object="${utilisateur}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+    <input type="hidden" th:field="*{id}">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="nom">Nom</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="nom" type="text" th:field="*{nom}">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" id="email" type="email" th:field="*{email}">
+    </div>
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+        Enregistrer
+      </button>
+      <a href="/utilisateurs" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+        Annuler
+      </a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Liste des Commandes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<div class="container mx-auto">
+  <h1 class="text-3xl font-bold mb-8">Liste des Commandes</h1>
+  <a href="/commandes/ajouter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter une commande</a>
+  <table class="table-auto w-full mt-8 bg-white shadow-md rounded">
+    <thead>
+    <tr>
+      <th class="border px-4 py-2">ID</th>
+      <th class="border px-4 py-2">Utilisateur</th>
+      <th class="border px-4 py-2">Produits</th>
+      <th class="border px-4 py-2">Date</th>
+      <th class="border px-4 py-2">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="commande : ${commandes}">
+      <td class="border px-4 py-2" th:text="${commande.id}"></td>
+      <td class="border px-4 py-2" th:text="${commande.utilisateur.nom}"></td>
+      <td class="border px-4 py-2">
+        <ul>
+          <li th:each="produit : ${commande.produits}" th:text="${produit.nom}"></li>
+        </ul>
+      </td>
+
+      <td class="border px-4 py-2">
+        <a th:href="@{/commandes/modifier/{id}(id=${commande.id})}" class="text-blue-500 hover:underline">Modifier</a>
+        <a th:href="@{/commandes/supprimer/{id}(id=${commande.id})}" class="text-red-500 hover:underline ml-4">Supprimer</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Produit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold mb-8" th:text="${#strings.isEmpty(produit.id) ? 'Ajouter un produit' : 'Modifier le produit'}"></h1>
+    <form th:action="@{/produits/ajouter}" th:object="${produit}" method="post" class="bg-white shadow-md rounded p-8">
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="nom">Nom</label>
+            <input class="border rounded w-full py-2 px-3" type="text" id="nom" name="nom" th:field="*{nom}" placeholder="Nom du produit" required>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="prix">Prix</label>
+            <input class="border rounded w-full py-2 px-3" type="number" step="0.01" id="prix" name="prix" th:field="*{prix}" placeholder="Prix du produit" required>
+        </div>
+        <div>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                Enregistrer
+            </button>
+            <a href="/produits" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-4">Annuler</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

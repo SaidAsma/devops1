@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil - Gestion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl text-center">
+    <div class="bg-white shadow-xl rounded-2xl overflow-hidden p-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
+                Application de Gestion
+            </h1>
+            <p class="text-gray-600 text-lg">
+                Bienvenue dans l'application de gestion
+            </p>
+        </div>
+
+        <nav class="grid grid-cols-2 gap-4 mt-8">
+            <!-- Lien vers Produits -->
+            <a href="/produits" class="block bg-blue-50 hover:bg-blue-100 rounded-lg p-4 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-box mx-auto mb-2 text-blue-600">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4.2a2 2 0 0 0-2 0l-7 4.2A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4.2a2 2 0 0 0 2 0l7-4.2A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+                <span class="text-blue-800 font-semibold">Liste des Produits</span>
+            </a>
+
+            <!-- Lien vers Commandes -->
+            <a href="/commandes" class="block bg-green-50 hover:bg-green-100 rounded-lg p-4 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard mx-auto mb-2 text-green-600">
+                    <rect width="14" height="18" x="5" y="3" rx="2" ry="2"/>
+                    <path d="M9 3v-.5a2.5 2.5 0 0 1 5 0V3"/>
+                </svg>
+                <span class="text-green-800 font-semibold">Liste des Commandes</span>
+            </a>
+
+            <!-- Lien vers Utilisateurs -->
+            <a href="/utilisateurs" class="block bg-yellow-50 hover:bg-yellow-100 rounded-lg p-4 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user mx-auto mb-2 text-yellow-600">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                </svg>
+                <span class="text-yellow-800 font-semibold">Liste des Utilisateurs</span>
+            </a>
+
+            <!-- Lien vers Factures -->
+            <a href="/factures" class="block bg-red-50 hover:bg-red-100 rounded-lg p-4 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mx-auto mb-2 text-red-600">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <line x1="10" y1="9" x2="8" y2="9"/>
+                </svg>
+                <span class="text-red-800 font-semibold">Liste des Factures</span>
+            </a>
+        </nav>
+    </div>
+</div>
+
+<footer class="absolute bottom-0 w-full p-4 text-center text-gray-600 bg-white bg-opacity-50">
+    <p>&copy; 2024 Application de Gestion - Tous droits réservés</p>
+</footer>
+</body>
+</html>
