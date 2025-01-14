@@ -1,14 +1,14 @@
-# Utiliser une image de base Java
-FROM openjdk:17-jdk-slim
+# Utiliser une image de base avec Java
+FROM openjdk:17-jdk-alpine
 
-# Définir le répertoire de travail
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier le fichier JAR généré dans l'image Docker
-COPY target/app.jar app.jar
+# Copier le fichier JAR de l'application dans le conteneur
+COPY target/*.jar app.jar
 
-# Exposer le port de l'application
+# Exposer le port sur lequel l'application Spring Boot écoute
 EXPOSE 8080
 
 # Commande pour exécuter l'application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]

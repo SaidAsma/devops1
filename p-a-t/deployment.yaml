@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+      annotations:
+        prometheus.io/scrape: "true"  # Pour permettre à Prometheus de scraper les métriques
+        prometheus.io/port: "8080"    # Port sur lequel les métriques sont exposées
+    spec:
+      containers:
+        - name: spring-app
+          image: docker.io/library/p-a-t-application:latest  # Utilisez l'image locale chargée dans Minikube
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"  # Exemple de variable d'environnement pour Spring
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health  # Endpoint de santé pour Spring Boot Actuator
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health  # Endpoint de santé pour Spring Boot Actuator
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
