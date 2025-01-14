@@ -1,10 +1,21 @@
 Documentation du Projet DevOps
 
-Introduction:
+1.Introduction:
 
 Ce projet est un exemple de configuration DevOps pour la gestion de déploiements et d'intégrations continues. Il inclut des fichiers de configuration pour Docker, Jenkins, et d'autres outils essentiels pour le pipeline CI/CD.
 
-Structure du Projet:
+2. Configuration de l'environnement 
+
+• Prérequis : Liste des outils nécessaires pour exécuter le projet (JDK, Maven, Docker, etc.). 
+
+• Installation : Instructions pour cloner le dépôt et installer les dépendances. 
+
+git clone https://github.com/SaidAsma/devops1.git 
+cd devops1 
+mvn install
+
+
+3.Structure du Projet:
 
 Le projet est structuré comme suit :
 
@@ -24,7 +35,7 @@ services.yaml: Fichier de configuration pour les services Kubernetes.
 
 pom.xml: Fichier de configuration pour les projets Maven.
 
-Configuration Docker:
+4.Configuration Docker:
 
 Le projet utilise Docker pour conteneuriser l'application. Le fichier Dockerfile contient les instructions pour construire l'image Docker. Le fichier docker-compose.yml est utilisé pour orchestrer les conteneurs.
 
@@ -36,7 +47,19 @@ docker-compose.yml:
 
 Le fichier docker-compose.yml définit les services, réseaux, et volumes pour l'application. Il permet de lancer plusieurs conteneurs en même temps et de les configurer pour qu'ils communiquent entre eux.
 
-Intégration Continue avec Jenkins:
+5. Exécution du projet 
+
+• Exécution locale : Instructions pour exécuter le projet en local. 
+
+mvn spring-boot:run 
+
+• Construction et exécution avec Docker : Instructions pour construire et exécuter l'application avec Docker.
+
+
+docker-compose up --build
+
+
+6.Intégration Continue avec Jenkins:
 
 Le fichier Jenkinsfile définit les étapes du pipeline CI/CD. Il inclut des étapes pour la construction, les tests, et le déploiement de l'application.
 
@@ -52,7 +75,7 @@ Le Jenkinsfile est un fichier de configuration pour Jenkins qui décrit les éta
 
 *Déployer l'application sur un environnement de test ou de production.
 
-Déploiement Kubernetes:
+7.Déploiement Kubernetes:
 
 Le projet utilise Kubernetes pour le déploiement de l'application. Les fichiers deployment.yaml et services.yaml contiennent les configurations nécessaires pour déployer l'application sur un cluster Kubernetes.
 
@@ -64,10 +87,13 @@ services.yaml:
 
 Le fichier services.yaml définit les services Kubernetes, qui permettent d'exposer les applications déployées à l'intérieur ou à l'extérieur du cluster.
 
-Gestion des Dépendances avec Maven:
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+8.Gestion des Dépendances avec Maven:
 
 Le fichier pom.xml est utilisé pour gérer les dépendances du projet dans un environnement Maven. Il définit les bibliothèques et les plugins nécessaires pour construire et tester l'application.
 
-Conclusion:
+9.Conclusion:
 
 Ce projet est un exemple complet de configuration DevOps pour une application moderne. Il utilise Docker pour la conteneurisation, Jenkins pour l'intégration continue, et Kubernetes pour le déploiement. Cette documentation fournit une vue d'ensemble des fichiers de configuration et de leur rôle dans le pipeline CI/CD.
